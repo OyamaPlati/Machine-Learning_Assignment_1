@@ -67,4 +67,6 @@ for iter in range(NUM_ITER):
 ###    final_cents.append(cents)
 ###    final_inert.append(inertia_end)
 ###    print('Difference between initial and final inertia: ', inertia_start-inertia_end)		
-	
+
+### Close	
+fo.close()
