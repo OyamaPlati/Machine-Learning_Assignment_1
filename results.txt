@@ -2,7 +2,7 @@ Iteration: 1
 Centriod: [[3.66666667 9.        ]
  [7.         4.33333333]
  [1.5        3.5       ]]
-Iteration: <built-in function iter>
+Iteration: 2
 Centroid: [[ 2.  10. ]
  [ 6.   6. ]
  [ 1.5  3.5]]
