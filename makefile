@@ -1,26 +1,17 @@
 
-PYTHON = python3
+PYTHON = python
 
-.PHONY = help setup install venv run clean
-
-FILES = input output
+.PHONY = help install venv run clean
 
 .DEFAULT_GOAL = help
 
 help:
 	@echo "---------------HELP-----------------"
-	@echo "To setup the project type make setup"
-	@echo "To test the project type make test"
+	@echo "To setup the project type make install"
+	@echo "To setup the environment type make venv"
 	@echo "To run the project type make run"
+	@echo "To clean the project type make clean"
 	@echo "------------------------------------"
-
-setup:
-	
-	@echo "Checking if project files are generated..."
-	[ -d project_files.project ] || (echo "No directory found, generating..." && mkdir project_files.project)
-	for FILE in ${FILES}; do \
-		touch "project_files.project/$${FILE}.txt"; \
-	done
 
 install: venv
 	. venv/bin/activate; pip3 install -Ur requirements.txt
