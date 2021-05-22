@@ -7,37 +7,26 @@ features = np.array([[2, 10], [2, 5], [8, 4], [5, 8], [7, 5], [6, 4], [1, 2], [4
 ### Initial centroid of each cluster 
 centroids = np.array([[2, 10], [5, 8], [1, 2]], np.float64)
 
-### Set the algorithm parameters before fitting the estimator to the data
-kmeans = KMeans(init = centroids, n_clusters=3, n_init=1)
-
-### Fit the model
-kmeans.fit(features)
-
 ### Print to file
 fo = open('results.txt', 'w')
 
-fo.write("Iteration: 1")
-fo.write('\n')
-fo.write('Centriod: ')
-content = str(kmeans.cluster_centers_) 
-fo.write(content)
-fo.write('\n')
-
-NUM_ITER = kmeans.n_iter_
-NUM_CLUSTERS = 3
+N = 3
     
-for sample in range(2, NUM_ITER):
+for iter in range(1, N):
 	fo.write('Iteration: ')
-	fo.write(str(sample))
+	fo.write(str(iter))
 	fo.write('\n')
-        
-	for iter in range(NUM_ITER):
-		kmeans = KMeans(n_clusters=NUM_CLUSTERS, init=centroids, max_iter=1, n_init=1)
-		kmeans.fit(features)
-		fo.write('Centroid: ')
-		content = str(kmeans.cluster_centers_) 
-		fo.write(content)
-		fo.write('\n')	
+	kMeans = KMeans(n_clusters=N, init=centroids, max_iter=1, n_init=1)
+	        
+	for cluster in range(N):
+		kMeans.fit(features)
+		intermediate_centers = kMeans.cluster_centers_
+		fo.write('Cluster: ' + str(cluster))
+		fo.write('\n')
+		fo.write('Centroid: \n')
+		fo.write(str(intermediate_centers))
+		fo.write('\n')
+		kMeans = KMeans(n_clusters=N, init=intermediate_centers, max_iter=1, n_init=1)	
 
 ### Close	
 fo.close()

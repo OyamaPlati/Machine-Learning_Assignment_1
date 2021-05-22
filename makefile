@@ -1,5 +1,5 @@
 
-PYTHON = python
+PYTHON = python3
 
 .PHONY = help install venv run clean
 
@@ -23,6 +23,5 @@ run:
 	${PYTHON} kmeans_clustering.py
 
 clean:
-	rm -rf *.project
 	rm -rf venv
 	find -iname "*.pyc" -delete
